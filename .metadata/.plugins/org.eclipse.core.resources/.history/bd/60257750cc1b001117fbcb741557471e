@@ -1,0 +1,91 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class AccountRegistrationPage extends BasePage {
+	
+	
+	
+	public AccountRegistrationPage(WebDriver driver) {
+		
+		super(driver);
+		
+	}
+	
+	@FindBy(xpath="//input[@id='input-firstname']")
+	WebElement firstname;
+	
+	@FindBy(xpath="//input[@id='input-lastname']")
+	WebElement lastname;
+	
+	@FindBy(xpath="//input[@id='input-email']")
+	WebElement email;
+	
+	@FindBy(xpath="//input[@name='telephone']")
+	WebElement telephone;
+	
+	@FindBy(xpath="//input[@id='input-password']")
+	WebElement password;
+	
+	@FindBy(xpath="//input[@id='input-confirm']")
+	WebElement confirmpassword;
+	
+	@FindBy(xpath="//input[@name='newsletter'][@value='1']")
+	WebElement subscribe;
+	
+	@FindBy(xpath="//input[@name='agree']")
+	WebElement agree;
+	
+	@FindBy(xpath="//input[@value='Continue']")
+	WebElement continuebtn;
+	
+	@FindBy(xpath="Your new account has been successfully created!")
+	WebElement successfull;
+	
+	public void txtfirstName(String fname) {
+	firstname.sendKeys(fname);
+	}
+	
+	public void txtlastName(String lname) {
+	lastname.sendKeys(lname);
+	}
+	
+	public void emailwrite(String emailp) {
+	email.sendKeys(emailp);
+	}
+	
+	public void telephonep(String tp) {
+		email.sendKeys(tp);
+		}
+	
+	public void passwordmasking(String ppassword) {
+	password.sendKeys(ppassword);
+		}
+	
+	public void passwordc(String cpassword) {
+		password.sendKeys(cpassword);
+			}
+	
+	public void newsletter() {
+		subscribe.click();
+			}
+	
+	public void policy() {
+		agree.click();
+			}
+	
+	public void continueclk() {
+		continuebtn.click();
+			}
+	
+	public String getconfirmationmsg() {
+		try {
+		return successfull.getText() ;
+	}catch(Exception e) {
+		return(e.getMessage());
+	
+	}
+	}
+}
